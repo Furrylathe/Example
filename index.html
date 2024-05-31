@@ -1,1 +1,47 @@
-<h1>Hello world</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Wish</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            background-color: #f0f0f0;
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+    </style>
+    <script>
+        function sendWish() {
+            fetch('http://localhost:5000/wish', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    alert('Birthday wish delivered!');
+                } else {
+                    alert('Failed to deliver the wish.');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+</head>
+<body>
+    <h1>Welcome to the Birthday Wish App</h1>
+    <button onclick="sendWish()">Click Here</button>
+</body>
+</html>
