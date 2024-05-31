@@ -22,7 +22,7 @@
     </style>
     <script>
         function sendWish() {
-            fetch('http://localhost:5000/wish', {
+            fetch('http://192.168.1.100:5000/wish', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -38,7 +38,7 @@
             })
             .catch(error => console.error('Error:', error));
         }
-    </script>
+    </script>    
 </head>
 <body>
     <h1>Welcome to the Birthday Wish App</h1>
